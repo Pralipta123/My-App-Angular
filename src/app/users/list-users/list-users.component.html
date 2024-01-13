@@ -1,0 +1,14 @@
+<h2 *ngIf="listUsers">Displaying {{  listUsers.length }} users</h2>
+<div class="main-content">
+    <mat-list role="list">
+        <mat-card class="list-user" role="listitem" *ngFor="let user of listUsers">
+            <mat-card-title>{{  user.name }} </mat-card-title>
+            <mat-card-content> 
+                <span class="username" >{{ user.email}} </span>
+            </mat-card-content>
+            <mat-card-actions>
+                <a class="action-link" [routerLink]="['/user/view', user.id]">View</a>  | <a class="action-link" [routerLink]="['/user/edit', user.id]"> Edit </a> | <a class="action-link" [routerLink]="['/user/delete', user.id]">Delete</a>
+            </mat-card-actions>
+        </mat-card>
+    </mat-list>
+  </div>
