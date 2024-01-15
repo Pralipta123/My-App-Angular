@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,7 +19,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class AddUsersComponent implements OnInit{
 
-
+  dataLoaded:boolean=true;
   addUserForm : FormGroup = new FormGroup({});
 
   constructor(private formBuilder:FormBuilder,
@@ -28,9 +28,9 @@ export class AddUsersComponent implements OnInit{
 
   ngOnInit(): void{
     this.addUserForm = this.formBuilder.group({
-      'username':new FormControl(''),
-      'email' :new FormControl(''),
-      'phone':new FormControl('')
+      'username':new FormControl('',[Validators.required,Validators.minLength(5)]),
+      'email' :new FormControl('',[Validators.required,Validators.email]),
+      'phone':new FormControl('',[Validators.required,Validators.maxLength(10)])
     })
   }
   createUser() {

@@ -5,7 +5,7 @@
             <p>
                 <mat-form-field ngSkipHydration appearance="outline">
                   <mat-label>User Name</mat-label>
-                  <input matInput placeholder="Username">
+                  <input matInput placeholder="Username" formControlName="username">
                   <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 </mat-form-field>
             </p>
@@ -13,7 +13,7 @@
               <p>
                   <mat-form-field ngSkipHydration appearance="outline">
                     <mat-label>Email Address</mat-label>
-                    <input matInput placeholder="Email">
+                    <input matInput placeholder="Email" formControlName="email">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                   </mat-form-field>
               </p>
@@ -21,12 +21,15 @@
             <p>
                 <mat-form-field ngSkipHydration appearance="outline">
                   <mat-label>Phone Number</mat-label>
-                  <input matInput placeholder="PhoneNumber">
+                  <input matInput placeholder="PhoneNumber" formControlName="phone">
                   <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 </mat-form-field>
             </p>
             
-            <button mat-raised-button color="primary">Create User</button>
+            <p>
+            <button mat-raised-button color="primary" [disabled]="!addUserForm.valid">Create User</button>
+          </p>
+
          </form>
     </mat-card-content>
 </mat-card> 
