@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [],
@@ -16,7 +17,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/materia
     HttpClientModule,
     RouterModule,ReactiveFormsModule,
     MatFormFieldModule,MatIconModule,
-    MatInputModule,MatSnackBarModule
+    MatInputModule,MatSnackBarModule,MatTableModule
   ],
   providers:[MatIconRegistry,UserService,{
     provide : MAT_SNACK_BAR_DEFAULT_OPTIONS,useValue: {duration : 2500}

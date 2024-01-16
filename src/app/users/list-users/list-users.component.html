@@ -1,14 +1,52 @@
-<h2 *ngIf="listUsers">Displaying {{  listUsers.length }} users</h2>
-<div class="main-content">
-    <mat-list role="list">
-        <mat-card class="list-user" role="listitem" *ngFor="let user of listUsers">
-            <mat-card-title>{{  user.name }} </mat-card-title>
-            <mat-card-content> 
-                <span class="username" >{{ user.email}} </span>
-            </mat-card-content>
-            <mat-card-actions>
-                <a class="action-link" [routerLink]="['/user/view', user.id]">View</a>  | <a class="action-link" [routerLink]="['/user/edit', user.id]"> Edit </a> | <a class="action-link" [routerLink]="['/user/delete', user.id]">Delete</a>
-            </mat-card-actions>
-        </mat-card>
-    </mat-list>
-  </div>
+
+<div>
+    <div>
+        <h2 *ngIf="listUsers">Displaying {{  listUsers.length }} users</h2>
+    </div>
+    <mat-card-content>
+       
+        <table mat-table [dataSource]="listUsers" class="mat-elevation-z8">
+    
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <!-- UserName Column -->
+            <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef> Username </th>
+            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+        
+            <!-- Email Column -->
+            <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action </th>
+                <td mat-cell *matCellDef="let element"> <a [routerLink]="['..','view',element.id]">View</a> |  <a [routerLink]="['..','edit',element.id]">Edit</a> | <a [routerLink]="['..','delete',element.id]">Delete</a> </td>
+                </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    
+    </mat-card-content>
+</div>
+
+
+
+
