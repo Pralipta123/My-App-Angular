@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 // Define the routes for  application
-const routes: Routes = [
+const routes: Routes = [{ path: 'roles', loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule) }
 
 
 ];
